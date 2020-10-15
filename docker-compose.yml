@@ -1,0 +1,22 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: demo-rabbitmq
+    restart: always
+    environment:
+      - "RABBITMQ_VM_MEMORY_HIGH_WATERMARK=1024m"
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  consumer:
+    build: ./Consumer/
+    image: demo-consumer
+    environment: 
+      - DOTNET_ENVIRONMENT=Development
+    restart: on-failure
+    links:
+      - rabbitmq
+    depends_on: 
+      - rabbitmq
