@@ -20,3 +20,14 @@ services:
       - rabbitmq
     depends_on: 
       - rabbitmq
+  
+  producer:
+    build: ./Producer/
+    image: demo-producer
+    environment: 
+      - DOTNET_ENVIRONMENT=Development
+    restart: on-failure
+    links:
+      - rabbitmq
+    depends_on: 
+      - rabbitmq
