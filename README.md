@@ -15,7 +15,7 @@ dotnet build
 
 Start dependencies (RabbitMQ)
 ```shell
-docker-compose up
+docker-compose up -d
 ```
 **Note:** The RabbitMQ console can be found at http://localhost:15672 (default user/pass is guest:guest)
 
@@ -27,4 +27,12 @@ dotnet run --project Consumer
 Start the producer app
 ```shell
 dotnet run --project Producer
+```
+
+## Closing demo
+Ctrl+C will stop the running .Net applications
+
+Stop RabbitMQ:
+```shell
+docker-compose down
 ```
