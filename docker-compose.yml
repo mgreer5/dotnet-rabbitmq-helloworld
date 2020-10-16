@@ -10,24 +10,24 @@ services:
       - 15672:15672
       - 5672:5672
 
-  consumer:
-    build: ./Consumer/
-    image: demo-consumer
-    environment: 
-      - DOTNET_ENVIRONMENT=Development
-    restart: on-failure
-    links:
-      - rabbitmq
-    depends_on: 
-      - rabbitmq
+  # consumer:
+  #   build: ./Consumer/
+  #   image: demo-consumer
+  #   environment: 
+  #     - DOTNET_ENVIRONMENT=Development
+  #   restart: on-failure
+  #   links:
+  #     - rabbitmq
+  #   depends_on: 
+  #     - rabbitmq
   
-  producer:
-    build: ./Producer/
-    image: demo-producer
-    environment: 
-      - DOTNET_ENVIRONMENT=Development
-    restart: on-failure
-    links:
-      - rabbitmq
-    depends_on: 
-      - rabbitmq
+  # producer:
+  #   build: ./Producer/
+  #   image: demo-producer
+  #   environment: 
+  #     - DOTNET_ENVIRONMENT=Development
+  #   restart: on-failure
+  #   links:
+  #     - rabbitmq
+  #   depends_on: 
+  #     - rabbitmq

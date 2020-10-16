@@ -6,12 +6,25 @@ A simple app to demonstrate using RabbitMQ with .Net Core
 - [.Net Core SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - [Docker](https://www.docker.com)
 
-## Running demo
+## Install packages and build
 ```shell
-docker-compose up --build
+dotnet restore
+dotnet build
+```
+## Running demo
+
+Start dependencies (RabbitMQ)
+```shell
+docker-compose up
+```
+**Note:** The RabbitMQ console can be found at http://localhost:15672 (default user/pass is guest:guest)
+
+Start the consumer app
+```shell
+dotnet run --project Consumer
 ```
 
-Navigate to the Rabbit MQ Console and send a test message to the helloworld queue:
-http://localhost:15672/#/queues/%2F/helloworld
-
-The message should echo to stdout in the docker container
+Start the producer app
+```shell
+dotnet run --project Producer
+```
